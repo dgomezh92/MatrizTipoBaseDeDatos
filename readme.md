@@ -83,9 +83,3 @@ El PDF se genera utilizando la biblioteca **jsPDF**. Incluye todas las respuesta
 - **Bootstrap 5**: Para la estructura y componentes responsivos.
 - **jsPDF**: Para la generación y descarga de archivos PDF.
 - **Chart.js**: Para la visualización de los resultados en gráficos.
-
-## Mejoras Futuras
-
-- Ampliar la cantidad de preguntas y criterios para considerar diferentes tipos de bases de datos (NewSQL, etc.).
-- Incorporar opciones para guardar los resultados en una base de datos remota.
-- Mejora de la interfaz de usuario para una mejor experiencia en dispositivos móviles.
