@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Base de Datos SQL o NoSQL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Agregamos Chart.js -->
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Evaluación de Base de Datos</h1>
+        <button class="btn btn-info mb-3" data-bs-toggle="modal" data-bs-target="#manualModal">¿Cómo realizar la evaluación?</button>
+
+        <form id="evaluationForm">
+            <div class="row">
+                <!-- Columna 1 -->
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label for="dataModel">• ¿Tus datos son estructurados o no estructurados?</label>
+                        <select id="dataModel" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Estructurado">Estructurados</option>
+                            <option value="No estructurado">No estructurados</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="scalability">• ¿Necesitas escalar horizontalmente?</label>
+                        <select id="scalability" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="transactions">• ¿Requieres transacciones ACID?</label>
+                        <select id="transactions" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="readWriteLoad">• ¿La carga de trabajo es predominantemente de lectura o escritura?</label>
+                        <select id="readWriteLoad" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Lectura">Lectura</option>
+                            <option value="Escritura">Escritura</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="dataGrowth">• ¿Esperas un crecimiento rápido de los datos?</label>
+                        <select id="dataGrowth" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label for="schemaFlexibility">• ¿Necesitas flexibilidad en el esquema de datos?</label>
+                        <select id="schemaFlexibility" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="dataRelations">• ¿Hay muchas relaciones complejas entre los datos?</label>
+                        <select id="dataRelations" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="performance">• ¿La latencia es un factor crítico para tu aplicación?</label>
+                        <select id="performance" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="security">• ¿Necesitas medidas de seguridad avanzadas?</label>
+                        <select id="security" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="reporting">• ¿Requieres capacidades avanzadas de informes y análisis?</label>
+                        <select id="reporting" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Columna 3 -->
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label for="communitySupport">• ¿Es importante tener soporte y documentación amplia?</label>
+                        <select id="communitySupport" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="cost">• ¿Tienes restricciones de presupuesto para la solución?</label>
+                        <select id="cost" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="integrationNeeds">• ¿Necesitas integrarte con sistemas existentes?</label>
+                        <select id="integrationNeeds" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="futureGrowth">• ¿Anticipas un crecimiento significativo en los próximos años?</label>
+                        <select id="futureGrowth" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="teamSkills">• ¿Tu equipo tiene experiencia con bases de datos Relacionales?</label>
+                        <select id="teamSkills" class="form-control" required>
+                            <option value="">Seleccione</option>
+                            <option value="Sí">Sí</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block mb-3">Evaluar</button>
+        </form>
+
+
+        <!-- Canvas para gráfico de Chart.js -->
+        <canvas id="chartResult" style="max-width: 600px; margin: 0 auto;"></canvas>
+
+    </div>
+
+    <!-- Modal for Manual -->
+    <div class="modal fade" id="manualModal" tabindex="-1" aria-labelledby="manualModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="manualModalLabel">Manual de Evaluación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Este formulario está diseñado para ayudarte a evaluar si debes usar una base de datos relacional (SQL) o no relacional (NoSQL). Aquí están los pasos para completar la evaluación:</p>
+                    <ol>
+                        <li>Lee cada pregunta cuidadosamente.</li>
+                        <li>Selecciona la opción que mejor se ajuste a tus necesidades.</li>
+                        <li>Al finalizar, presiona el botón "Evaluar".</li>
+                        <li>El sistema te proporcionará una recomendación basada en tus respuestas.</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
